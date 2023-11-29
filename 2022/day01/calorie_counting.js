@@ -9,6 +9,7 @@ fs.readFile("input.txt", "utf8", (err, data) => {
   topThree(splitData);
 });
 
+// part two
 const topThree = (data) => {
   let calories = [];
   let sum = 0;
@@ -27,6 +28,7 @@ const topThree = (data) => {
   console.log(`top 3 elves: ${top3}`);
 };
 
+// part one
 const biggestElf = (data) => {
   let maxCalorie = 0;
   let sum = 0;
