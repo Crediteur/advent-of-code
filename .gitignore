@@ -1,3 +1,6 @@
+# ignore python cached data
+*.pyc
+
 # fake .env file
 *.json
 
