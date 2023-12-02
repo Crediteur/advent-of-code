@@ -34,7 +34,7 @@ def create_aoc_dir(new_dir: str, data: str) -> None:
 
     # https://tutorial.eyehunts.com/python/python-file-modes-open-write-append-r-r-w-w-x-etc/
     f = open(f"{new_dir}/{FILENAME}", "w")  # open file in write mode
-    f.write(data)
+    f.write(data.rstrip("\r\n"))
     f.close()
 
     if exists:
