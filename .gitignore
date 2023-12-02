@@ -1,3 +1,7 @@
+# ignore some test files
+t.js
+t.py
+
 # ignore python cached data
 *.pyc
 
