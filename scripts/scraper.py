@@ -49,9 +49,12 @@ parser.add_argument("-y", "--year", type=int)
 parser.add_argument("-d", "--day", type=int)
 args = parser.parse_args()
 
+# get path of file
+cur_path = os.path.dirname(__file__)
+data_path = "/../data.json"
 # get env variables from data.json
-main_dir = json.load(open("./data.json"))["directory"]
-cookie = json.load(open("./data.json"))["cookie"]
+main_dir = json.load(open(cur_path + data_path))["directory"]
+cookie = json.load(open(cur_path + data_path))["cookie"]
 
 # variables
 year = args.year
