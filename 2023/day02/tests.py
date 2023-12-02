@@ -18,10 +18,16 @@ class TestPartOne(unittest.TestCase):
         expected = 1
         self.assertEqual(actual, expected)
 
+    # str1 cubes is int
+    def test_parse_line_cubes_is_int(self):
+        actual = type(parse_line(str1)[1][0][0])
+        expected = type(1)
+        self.assertEqual(actual, expected)
+
     # str1 cubes and colours
     def test_parse_line_cube_colours(self):
         actual = parse_line(str1)[1]
-        expected = [["3", "blue"], ["4", "red"]]
+        expected = [[3, "blue"], [4, "red"]]
         self.assertEqual(actual, expected)
 
     # data1

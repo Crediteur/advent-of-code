@@ -12,6 +12,8 @@ def parse_line(line) -> list[int, list[int, int]]:
 
     pulls = line[1].replace(";", ",").split(",")  # get list of cube pulls
     pulls = [p.strip().split(" ") for p in pulls]  # clean string
+    for pull in pulls:
+        pull[0] = int(pull[0])
 
     return [id, pulls]
 
@@ -29,7 +31,7 @@ def possible_cubes(data) -> int:
         # check cubes and colour of every pull
         for pull in pulls:
             cubes, colour = pull
-            if bag[colour] < int(cubes):  # check if each pull is possible
+            if bag[colour] < cubes:  # check if each pull is possible
                 possible = False
 
         if possible:  # if possible, add game id to sum
@@ -50,8 +52,8 @@ def power_cubes(data) -> int:
         # check if cubes is greater than in the bag
         for pull in pulls:
             cubes, colour = pull
-            if max_bag[colour] < int(cubes):
-                max_bag[colour] = int(cubes)
+            if max_bag[colour] < cubes:
+                max_bag[colour] = cubes
 
         # sum the power of each colour in bag
         power_cubes = 1
