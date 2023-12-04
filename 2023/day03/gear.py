@@ -1,10 +1,3 @@
-# iterate to each character
-# if symbol, look at adjacent indices in 2d grid
-#   (append empty row to start and end to reduce vertical bounds checking)
-# if char is a number, look forward and backward of index to parse number
-# sum number and replace number with dot "."
-
-
 def read_input():
     with open("input.txt", "r") as file:
         data = file.read()
@@ -25,11 +18,10 @@ def find_symbols(data) -> set[str]:
 
 
 # takes the row (string) and index (int) of a number
-#
 def parse_number(chunk: str, x_pos: int) -> int:
     """
-    finds the whole digit given one index position in a string
-    checks left and right of given index for numbers
+    finds the whole number given one index position in a string
+    checks left and right of given index for more digits
     """
 
     # track char nums in an array for easier appends
@@ -53,11 +45,16 @@ def parse_number(chunk: str, x_pos: int) -> int:
     # print(f"new chunk: {new_chunk}")
 
     num = int("".join(num_chars))
-    # print(num)
     return num, new_chunk
 
 
 # part one
+# rough pseudocode:
+# iterate to each character
+# if symbol, look at adjacent indices in 2d grid
+#   (append empty row to start and end to reduce vertical bounds checking)
+# if char is a number, look forward and backward of index to parse number
+# sum number and replace number with dot "."
 def find_numbers(data, symbols: set[str]) -> int:
     """
     sum numbers found adjacent to symbols
