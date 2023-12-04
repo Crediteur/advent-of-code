@@ -1,6 +1,3 @@
-# check for duplicate numbers
-# check for numbers adjacent to two symbols?
-
 import unittest
 from gear import find_symbols, parse_number, find_numbers, find_gears
 

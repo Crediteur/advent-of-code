@@ -1,8 +1,8 @@
 # iterate to each character
 # if symbol, look at adjacent indices in 2d grid
-# (append empty row to start and end)
-# if character is anumber, look forward and backward and parse number
-# sum number and replace number with dots
+#   (append empty row to start and end to reduce vertical bounds checking)
+# if char is a number, look forward and backward of index to parse number
+# sum number and replace number with dot "."
 
 
 def read_input():
@@ -72,7 +72,7 @@ def find_numbers(data, symbols: set[str]) -> int:
     data.insert(0, "." * N)
     data.append("." * N)
 
-    sum = 0
+    total = 0
     for i in range(1, len(data) - 1):
         # get a chunk of three sequential rows
         chunk = [data[i - 1], data[i], data[i + 1]]
@@ -86,7 +86,7 @@ def find_numbers(data, symbols: set[str]) -> int:
                         # single digit found, extract whole number
                         num, new_chunk = parse_number(chunk[1 + y], j + x)
                         chunk[1 + y] = new_chunk
-                        sum += num
+                        total += num
 
         # update data with parsed chunks
         # chunk needs to be updated every functional reference, because it is pass by value
@@ -96,7 +96,7 @@ def find_numbers(data, symbols: set[str]) -> int:
 
     # for row in data:
     #     print(row)
-    return sum
+    return total
 
 
 # part two
@@ -111,7 +111,7 @@ def find_gears(data):
     data.insert(0, "." * N)
     data.append("." * N)
 
-    sum = 0
+    total = 0
     for i in range(1, len(data) - 1):
         # get a chunk of three sequential rows
         chunk = [data[i - 1], data[i], data[i + 1]]
@@ -129,14 +129,14 @@ def find_gears(data):
                         parts.append(num)
                 # only sum if exactly two parts are found
                 if len(parts) == 2:
-                    sum += parts[0] * parts[1]
+                    total += parts[0] * parts[1]
 
         # update data with parsed chunks
         data[i - 1] = chunk[0]
         data[i] = chunk[1]
         data[i + 1] = chunk[2]
 
-    return sum
+    return total
 
 
 if __name__ == "__main__":
