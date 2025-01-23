@@ -24,7 +24,8 @@ def create_aoc_dir(new_dir: str, data: str) -> None:
 
     # check if directory folders exist
     if not os.path.exists(new_dir):
-        os.makedirs(new_dir)
+        os.umask(0)
+        os.makedirs(new_dir, mode=0o777)
         print(f"new folder created at: {new_dir}")
 
     # check if data file exists
