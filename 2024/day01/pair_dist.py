@@ -1,5 +1,6 @@
 import os
 
+
 def read_input():
     data = []
     with open("input.txt") as file:
@@ -7,30 +8,33 @@ def read_input():
             data.append(line.rstrip("\r\n"))
     return data
 
+
 # clean and return data as two lists
 def split_data(data):
     left = []
     right = []
     for d in data:
-        a,b = d.split()
+        a, b = d.split()
         left.append(int(a))
         right.append(int(b))
     return [left, right]
+
 
 # part 1
 def total_lowest_distance(data):
     left, right = data
     total = 0
-    
+
     # sort lists in descending order
     left.sort()
     right.sort()
 
     # calculate distances
-    for i,_ in enumerate(left):
+    for i, _ in enumerate(left):
         total += abs(left[i] - right[i])
 
     return total
+
 
 # part 2
 def similarity_score(data):
@@ -54,5 +58,5 @@ def similarity_score(data):
 
 
 data = split_data(read_input())
-print(f'total lowest distance of lists: {total_lowest_distance(data)}')
-print(f'similarity score: {similarity_score(data)}')
+print(f"total lowest distance of lists: {total_lowest_distance(data)}")
+print(f"similarity score: {similarity_score(data)}")
