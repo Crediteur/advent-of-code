@@ -67,6 +67,7 @@ def report_check(data: list[str]) -> int:
 
 
 # part 2
+# problem edge case: 55 52 53 54 56 57
 def tolerance_check(data: list[str]) -> int:
     tole_count = 0
 
