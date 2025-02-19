@@ -27,7 +27,7 @@ def within_bounds(pos, dimensions) -> bool:
 # part 1 and pt2
 # note: pos(x,y) is the starting location of the guard
 #       and next(x,y) is the position being incremented to track steps
-def walk_count(data) -> int:
+def walk_guard_path(data) -> int:
     height = len(data)
     length = len(data[0])
     print(height, length)
@@ -75,7 +75,7 @@ def walk_count(data) -> int:
         # increment position (next_y, next_x) and record to sets
         else:
 
-            # pt2
+            # pt2 (original function condensed here)
             # place a block at every location and check if new matrix contains a loop
             if (next_y, next_x) != pos and (next_y, next_x) not in blocks:
                 mod_data = copy.deepcopy(data)
@@ -94,7 +94,7 @@ def walk_count(data) -> int:
         next_y += dir_y
         next_x += dir_x
 
-    # return set of all walked spaces
+    # return set of answers for p1 and p2
     return (len(spaces), len(blocks))
 
 
@@ -153,8 +153,9 @@ def contains_loop(mod_data, start_pos, dir_i=0) -> bool:
 # every step: check linear path of next dir to see if loop can be made
 #    case 1: (pos, next_dir) exists in traversed spaces
 #    case 2: check possible spaces in perpendicular next direction
+#    note: found that case 2 includes case 1, therefore only case 2 was necessary
 
 
 data = read_input()
-print(f"total unique spaces traversed: {walk_count(data)[0]}")
-print(f"number of obstructions that form a loop: {walk_count(data)[1]}")
+print(f"total unique spaces traversed: {walk_guard_path(data)[0]}")
+print(f"number of obstructions that form a loop: {walk_guard_path(data)[1]}")
