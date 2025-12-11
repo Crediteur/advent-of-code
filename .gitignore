@@ -1,6 +1,12 @@
+# ignore rust files
+*.exe
+Cargo.lock
+Cargo.toml
+
 # ignore some test files
 t.js
 t.py
+test.rs
 
 # ignore python cached data
 *.pyc
